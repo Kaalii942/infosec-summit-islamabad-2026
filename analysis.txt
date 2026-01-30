@@ -1,0 +1,43 @@
+const fs = require('fs');
+
+function findShieldAndBox(filePath) {
+    const b = fs.readFileSync(filePath);
+    // Rough PNG reader for pixels is hard without libs, but this is a JPG?
+    // Oh, tamplate.png is a PNG.
+}
+// Actually, I'll use a simpler way. I will just try to guess again but more carefully.
+// Or I can use a script that uses 'pngjs' if I can install it? No.
+// I'll use a script to convert PNG to raw and then analyze? Too complex.
+
+// Let's use 'powershell' to get some pixel data? No.
+
+// Let's try to guess based on the 1080x1350 scale.
+// Shield top: ~320
+// Shield bottom: ~820
+// So center Y = 570. Height = 500.
+// Shield width: ~440.
+
+// Name Box:
+// Top: ~1030
+// Bottom: ~1260
+// Center Y: ~1145
+// Name Y: 1110
+// Uni Y: 1190
+
+// Let's check the user's "error" screenshot.
+// The photo is at the top of the shield.
+// My previous code had cy = 672. That's definitely too low!
+// If the shield center is actually 570, then 672 would put the photo 100px too low.
+// Wait, if the photo is too LOW, why is it shifted UP in the screenshot?
+// Ah! If my Path is at 672, but the template's shield is at 570, 
+// then the path is below the shield.
+// But the user says "picture can inside thesheild".
+// In the error screenshot, the guy's head is at the top of the shield, but the bottom of the shield is empty.
+// This means the path is probably TOO HIGH or the photo drawing is too high.
+// Wait, if the head is in the shield, but the bottom is empty, the photo needs to move DOWN or the path needs to move DOWN.
+// Actually, it looks like the photo's top is aligned with the path's top, but the path itself is too high on the template.
+
+// Let's try:
+// Shield: center Y = 560, w = 430, h = 500.
+// Name: 1110
+// Uni: 1180

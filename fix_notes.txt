@@ -1,0 +1,33 @@
+const fs = require('fs');
+
+// A minimal PNG parser to find the bounding box of the white shield
+// This is hard without libs, but I can check for certain PNG chunks.
+// Or I can just use a brute-force approach if I can read the pixels.
+
+// Let's try to get the pixels using a small node script if possible.
+// Actually, I'll just use a more logical approach.
+// I will draw the photo, then the template with Destination-Over.
+// No, that's for transparency.
+
+// Let's try to fix the coordinates based on the screenshot.
+// In the 2nd SS:
+// The guy's eyes are at the level of the 'Summit Islamabad' text.
+// The shield border starts way below his head.
+// This means the shield coordinates in my code (y: 565) are way too high.
+
+// In tamplate.png (1080x1350):
+// Top header (logos) ~ 150px
+// INFOSEC logo area ~ 250px
+// Shield should start at ~400px.
+// Shield center ~ 680px.
+// Shield end ~ 950px.
+
+// Box center ~ 1150px.
+
+// Let's try coordinates:
+// Shield: x: 540, y: 690, w: 450, h: 560
+// Name: 1125
+// Uni: 1205
+
+// Also, the CLIP path was probably offset.
+// Let's use a simpler Shield path.

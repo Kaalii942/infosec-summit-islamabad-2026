@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Post Generator | Tech Summit 2026</title>
+    <meta name="description"
+        content="Generate your personalized 'I'm Attending' post for the International Tech Summit 2026.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="container">
+        <header class="header">
+            <h1 class="glow-text">InfoSec Summit 2026</h1>
+            <p class="subtitle">Attendee Post Generator</p>
+        </header>
+
+        <section class="generator-card">
+            <div class="input-section">
+                <div class="form-group">
+                    <label for="photoUpload">Upload Your Photo</label>
+                    <div class="file-drop-area" id="dropArea">
+                        <span class="fake-btn">Choose Image</span>
+                        <span class="file-msg">or drag and drop here (JPG, PNG - Max 5MB)</span>
+                        <input class="file-input" type="file" id="photoUpload" accept="image/jpeg, image/png">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="userName">Full Name</label>
+                    <input type="text" id="userName" placeholder="Enter your full name" maxlength="25">
+                </div>
+
+                <div class="form-group">
+                    <label for="universityName">University / Organization</label>
+                    <input type="text" id="universityName" placeholder="Enter your university or company"
+                        maxlength="40">
+                </div>
+
+                <div class="button-group">
+                    <button id="generateBtn" class="btn btn-primary">
+                        <span class="btn-text">Generate My Post</span>
+                        <div class="loader" id="loader"></div>
+                    </button>
+                    <button id="resetBtn" class="btn btn-secondary">Reset</button>
+                </div>
+            </div>
+
+            <div class="preview-section" id="previewArea">
+                <div class="preview-header">
+                    <h3>Preview</h3>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="postCanvas" width="1080" height="1350"></canvas>
+                    <div class="placeholder-preview" id="placeholderPreview">
+                        <p>Your post will appear here</p>
+                    </div>
+                </div>
+                <button id="downloadBtn" class="btn btn-download" disabled>
+                    Download PNG
+                </button>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2026 InfoSec Summit Islamabad. All rights reserved.</p>
+        </footer>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
